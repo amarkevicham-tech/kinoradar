@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-23T22:24:55.162387+00:00",
+  "checked_at": "2026-11-23T22:32:45.732648+00:00",
   "movies": [
     {
       "movie": "Святые предприниматели",
@@ -11,7 +11,14 @@
           "date": "Fri, 13 Nov 2026 08:00:00 GMT",
           "source": "Официальный портал Московской Патриархии",
           "classification": "unconfirmed",
-          "status_label": "Не подтверждено — полный фильм не проверен"
+          "status_label": "Не подтверждено — полный фильм не проверен",
+          "page_check": {
+            "page_status": "checked",
+            "page_title": "Google News",
+            "duration_seconds": null,
+            "video_found": false,
+            "page_message": "Не удалось обнаружить явные признаки видеоплеера."
+          }
         },
         {
           "title": "В Черкесске состоялся показ фильма «Святые предприниматели» - Благословенный Кавказ",
@@ -19,7 +26,14 @@
           "date": "Thu, 19 Nov 2026 10:48:05 GMT",
           "source": "Благословенный Кавказ",
           "classification": "unconfirmed",
-          "status_label": "Не подтверждено — полный фильм не проверен"
+          "status_label": "Не подтверждено — полный фильм не проверен",
+          "page_check": {
+            "page_status": "checked",
+            "page_title": "Google News",
+            "duration_seconds": null,
+            "video_found": false,
+            "page_message": "Не удалось обнаружить явные признаки видеоплеера."
+          }
         },
         {
           "title": "«НТМ» — Народное телевидение Мордовии Спецпоказ фильма «Святые предприниматели» - Народное телевидение Мордовии",
@@ -27,7 +41,14 @@
           "date": "Tue, 17 Nov 2026 21:26:29 GMT",
           "source": "Народное телевидение Мордовии",
           "classification": "unconfirmed",
-          "status_label": "Не подтверждено — полный фильм не проверен"
+          "status_label": "Не подтверждено — полный фильм не проверен",
+          "page_check": {
+            "page_status": "checked",
+            "page_title": "Google News",
+            "duration_seconds": null,
+            "video_found": false,
+            "page_message": "Не удалось обнаружить явные признаки видеоплеера."
+          }
         },
         {
           "title": "Фильм: Святые предприниматели - ovideo.ru",
@@ -35,7 +56,14 @@
           "date": "Sat, 21 Nov 2026 21:13:04 GMT",
           "source": "ovideo.ru",
           "classification": "unconfirmed",
-          "status_label": "Не подтверждено — полный фильм не проверен"
+          "status_label": "Не подтверждено — полный фильм не проверен",
+          "page_check": {
+            "page_status": "checked",
+            "page_title": "Google News",
+            "duration_seconds": null,
+            "video_found": false,
+            "page_message": "Не удалось обнаружить явные признаки видеоплеера."
+          }
         },
         {
           "title": "Историческая память как фундамент созидания: премьера фильма «Святые предприниматели - Совет Федерации Федерального Собрания Российской Федерации",
@@ -43,7 +71,14 @@
           "date": "Thu, 05 Nov 2026 13:20:22 GMT",
           "source": "Совет Федерации Федерального Собрания Российской Федерации",
           "classification": "unconfirmed",
-          "status_label": "Не подтверждено — полный фильм не проверен"
+          "status_label": "Не подтверждено — полный фильм не проверен",
+          "page_check": {
+            "page_status": "checked",
+            "page_title": "Google News",
+            "duration_seconds": null,
+            "video_found": false,
+            "page_message": "Не удалось обнаружить явные признаки видеоплеера."
+          }
         },
         {
           "title": "В Казани пройдут показы фильма телеканала «СПАС» «Святые предприниматели» | Новости Казанской епархии - Татарстанская митрополия",
@@ -51,7 +86,14 @@
           "date": "Mon, 02 Nov 2026 10:34:03 GMT",
           "source": "Татарстанская митрополия",
           "classification": "unconfirmed",
-          "status_label": "Не подтверждено — полный фильм не проверен"
+          "status_label": "Не подтверждено — полный фильм не проверен",
+          "page_check": {
+            "page_status": "checked",
+            "page_title": "Google News",
+            "duration_seconds": null,
+            "video_found": false,
+            "page_message": "Не удалось обнаружить явные признаки видеоплеера."
+          }
         },
         {
           "title": "В Кургане покажут фильм о святых предпринимателях - URA.RU",
@@ -59,7 +101,14 @@
           "date": "Tue, 10 Nov 2026 12:03:00 GMT",
           "source": "URA.RU",
           "classification": "unconfirmed",
-          "status_label": "Не подтверждено — полный фильм не проверен"
+          "status_label": "Не подтверждено — полный фильм не проверен",
+          "page_check": {
+            "page_status": "checked",
+            "page_title": "Google News",
+            "duration_seconds": null,
+            "video_found": false,
+            "page_message": "Не удалось обнаружить явные признаки видеоплеера."
+          }
         },
         {
           "title": "5 ноября в широкий кинопрокат выходит новый документальный исторический фильм «Святые предприниматели - Нижегородская Митрополия",
@@ -67,7 +116,14 @@
           "date": "Tue, 03 Nov 2026 11:45:00 GMT",
           "source": "Нижегородская Митрополия",
           "classification": "unconfirmed",
-          "status_label": "Не подтверждено — полный фильм не проверен"
+          "status_label": "Не подтверждено — полный фильм не проверен",
+          "page_check": {
+            "page_status": "checked",
+            "page_title": "Google News",
+            "duration_seconds": null,
+            "video_found": false,
+            "page_message": "Не удалось обнаружить явные признаки видеоплеера."
+          }
         },
         {
           "title": "«Святые предприниматели» — новый фильм телеканала «СПАС» | - Владикавказская епархия",
@@ -75,7 +131,14 @@
           "date": "Fri, 06 Nov 2026 11:33:18 GMT",
           "source": "Владикавказская епархия",
           "classification": "unconfirmed",
-          "status_label": "Не подтверждено — полный фильм не проверен"
+          "status_label": "Не подтверждено — полный фильм не проверен",
+          "page_check": {
+            "page_status": "checked",
+            "page_title": "Google News",
+            "duration_seconds": null,
+            "video_found": false,
+            "page_message": "Не удалось обнаружить явные признаки видеоплеера."
+          }
         },
         {
           "title": "⚡️Фильм «Святые предприниматели» С 5 ноября — в кинотеатрах России Это фильм о нравственном измерении в предпринимательстве, бизнесе на службе... 2026 - ВКонтакте",
@@ -83,7 +146,14 @@
           "date": "Thu, 08 Oct 2026 14:11:21 GMT",
           "source": "ВКонтакте",
           "classification": "unconfirmed",
-          "status_label": "Не подтверждено — полный фильм не проверен"
+          "status_label": "Не подтверждено — полный фильм не проверен",
+          "page_check": {
+            "page_status": "checked",
+            "page_title": "Google News",
+            "duration_seconds": null,
+            "video_found": false,
+            "page_message": "Не удалось обнаружить явные признаки видеоплеера."
+          }
         }
       ]
     }
