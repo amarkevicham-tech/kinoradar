@@ -1,3 +1,4 @@
+
 import json
 import urllib.parse
 import urllib.request
@@ -9,8 +10,42 @@ BASE_DIR = Path(__file__).parent
 MOVIES_FILE = BASE_DIR / "tracked-movies.json"
 RESULTS_FILE = BASE_DIR / "results.json"
 
+EXCLUDED_WORDS = [
+    "трейлер",
+    "тизер",
+    "фрагмент",
+    "отрывок",
+    "интервью",
+    "обзор",
+    "рецензия",
+    "making of",
+    "behind the scenes",
+    "teaser",
+    "trailer",
+    "clip",
+    "interview",
+    "review",
+    "фильм о фильме"
+]
+
+def classify_result(title):
+    text = title.lower()
+
+    for word in EXCLUDED_WORDS:
+        if word in text:
+            return {
+                "classification": "trailer_or_fragment",
+                "status_label": "Трейлер или фрагмент — не подходит"
+            }
+
+    return {
+        "classification": "unconfirmed",
+        "status_label": "Не подтверждено — полный фильм не проверен"
+    }
+
 def check_movie(title):
     query = urllib.parse.quote('"' + title + '"')
+
     url = (
         "https://news.google.com/rss/search?q="
         + query
@@ -30,13 +65,16 @@ def check_movie(title):
         items = []
 
         for item in root.findall(".//item")[:10]:
+            result_title = item.findtext("title", "")
+            classification = classify_result(result_title)
+
             items.append({
-                "title": item.findtext("title", ""),
+                "title": result_title,
                 "link": item.findtext("link", ""),
                 "date": item.findtext("pubDate", ""),
-                "source": (
-                    item.findtext("source", "")
-                )
+                "source": item.findtext("source", ""),
+                "classification": classification["classification"],
+                "status_label": classification["status_label"]
             })
 
         return {
