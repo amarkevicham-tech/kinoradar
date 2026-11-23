@@ -70,6 +70,23 @@ input {
   font-size: 14px;
   line-height: 1.5;
 }
+.status {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 5px 8px;
+  border-radius: 4px;
+  font-size: 13px;
+  background: #fff0d5;
+  color: #795000;
+}
+.status.excluded {
+  background: #fbe5e5;
+  color: #922b2b;
+}
+.status.unknown {
+  background: #fff0d5;
+  color: #795000;
+}
 </style>
 </head>
 <body>
@@ -117,8 +134,9 @@ input {
   <button onclick="loadResults()">Обновить результаты</button>
 
   <p class="note">
-    Ниже отображаются найденные упоминания фильмов.
-    Упоминание ещё не означает, что полная версия доступна для просмотра.
+    Найденные публикации не обязательно содержат полный фильм.
+    Ни одна ссылка не считается подтверждением полной версии,
+    пока просмотр целиком не проверен.
   </p>
 
   <div id="automaticResults"></div>
@@ -297,12 +315,34 @@ async function loadResults() {
           item.className = 'mention';
 
           var link = document.createElement('a');
-          link.href = mention.link;
+          link.href = mention.link || '#';
           link.target = '_blank';
           link.rel = 'noopener';
           link.textContent = mention.title || 'Открыть публикацию';
 
           item.appendChild(link);
+
+          var status = document.createElement('div');
+          status.className = 'status';
+
+          if (mention.classification === 'trailer_or_fragment') {
+            status.className += ' excluded';
+            status.textContent =
+              mention.status_label || 'Трейлер или фрагмент — не подходит';
+          } else {
+            status.className += ' unknown';
+            status.textContent =
+              mention.status_label || 'Не подтверждено — полный фильм не проверен';
+          }
+
+          item.appendChild(status);
+
+          if (mention.source) {
+            var source = document.createElement('p');
+            source.className = 'note';
+            source.textContent = 'Источник: ' + mention.source;
+            item.appendChild(source);
+          }
 
           if (mention.date) {
             var info = document.createElement('p');
