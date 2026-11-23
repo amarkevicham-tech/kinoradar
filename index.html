@@ -131,16 +131,13 @@ function searchMovie() {
   var yandexQuery = encodeURIComponent(
     title + ' смотреть онлайн'
   );
-  var videoQuery = encodeURIComponent(
-    title + ' смотреть онлайн site:vk.com/video'
-  );
+  
 
   results.innerHTML =
     '<h3>Где искать «' + escapeHTML(title) + '»</h3>' +
     '<a class="result" target="_blank" rel="noopener" href="https://vk.com/video?q=' +
     vkQuery + '">Искать видео ВКонтакте</a>' +
-    '<a class="result" target="_blank" rel="noopener" href="https://yandex.ru/search/?text=' +
-    videoQuery + '">Искать видео через Яндекс на VK</a>' +
+    
     '<a class="result" target="_blank" rel="noopener" href="https://yandex.ru/search/?text=' +
     yandexQuery + '">Искать в Яндексе на других площадках</a>';
 }
