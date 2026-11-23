@@ -2,371 +2,227 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#172033">
-  <title>Кинорадар — поиск и отслеживание фильмов</title>
-  <style>
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f3f5f9;
-      color: #20283a;
-    }
-
-    header {
-      background: #172033;
-      color: white;
-      padding: 25px 20px;
-    }
-
-    .container {
-      max-width: 850px;
-      margin: auto;
-    }
-
-    header h1 {
-      margin: 0 0 7px;
-      font-size: 29px;
-    }
-
-    header p {
-      margin: 0;
-      color: #c5ccda;
-      font-size: 14px;
-    }
-
-    main {
-      padding: 25px 16px 50px;
-    }
-
-    .intro {
-      margin-bottom: 22px;
-    }
-
-    .intro h2 {
-      margin: 0 0 8px;
-      font-size: 23px;
-    }
-
-    .intro p {
-      color: #667085;
-      line-height: 1.5;
-      margin: 0;
-    }
-
-    .tabs {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 18px;
-    }
-
-    button {
-      cursor: pointer;
-      font-size: 15px;
-      border: 0;
-      border-radius: 9px;
-      padding: 12px 17px;
-    }
-
-    .tab {
-      background: #e3e7ef;
-      color: #344054;
-    }
-
-    .tab.active {
-      background: #315ee7;
-      color: white;
-    }
-
-    .panel {
-      background: white;
-      border-radius: 13px;
-      padding: 22px;
-      box-shadow: 0 3px 15px rgba(20,30,50,.05);
-    }
-
-    .panel h3 {
-      margin: 0 0 8px;
-      font-size: 19px;
-    }
-
-    .hint {
-      color: #667085;
-      font-size: 14px;
-      line-height: 1.5;
-      margin: 0 0 17px;
-    }
-
-    input {
-      width: 100%;
-      padding: 14px;
-      border: 1px solid #ccd2dd;
-      border-radius: 8px;
-      font-size: 16px;
-      margin-bottom: 12px;
-    }
-
-    input:focus {
-      outline: 2px solid #b7c7ff;
-      border-color: #315ee7;
-    }
-
-    .main-button {
-      width: 100%;
-      background: #315ee7;
-      color: white;
-      font-weight: bold;
-    }
-
-    .main-button:hover {
-      background: #244bc2;
-    }
-
-    .notice {
-      margin-top: 16px;
-      padding: 13px;
-      background: #eef3ff;
-      border-radius: 8px;
-      color: #40527d;
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    .list-section {
-      margin-top: 28px;
-    }
-
-    .list-section h3 {
-      font-size: 18px;
-    }
-
-    .movie {
-      background: white;
-      border: 1px solid #e2e6ed;
-      border-radius: 9px;
-      padding: 14px;
-      margin-top: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .movie-name {
-      font-weight: bold;
-      overflow-wrap: anywhere;
-    }
-
-    .movie-status {
-      font-size: 12px;
-      color: #667085;
-      margin-top: 5px;
-    }
-
-    .delete-button {
-      background: #fcecec;
-      color: #b42318;
-      padding: 9px 12px;
-      flex-shrink: 0;
-    }
-
-    .empty {
-      color: #8992a3;
-      font-size: 14px;
-      padding: 14px 0;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    footer {
-      text-align: center;
-      color: #8992a3;
-      font-size: 12px;
-      padding: 20px;
-    }
-
-    @media (max-width: 520px) {
-      header h1 { font-size: 25px; }
-      .tabs { flex-direction: column; }
-      .panel { padding: 17px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Кинорадар</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f3f5f8;
+  color: #222;
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 15px;
+}
+h1 { text-align: center; }
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin: 25px 0;
+}
+button {
+  padding: 12px 16px;
+  border: 0;
+  border-radius: 6px;
+  background: #2459a6;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+}
+.tabs button { flex: 1; }
+button.active { background: #163d75; }
+.panel {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px;
+  margin: 12px 0;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.hidden { display: none; }
+.result {
+  display: block;
+  margin: 12px 0;
+  padding: 13px;
+  background: #edf3fb;
+  border-radius: 6px;
+  color: #174d91;
+  text-decoration: none;
+}
+.result:hover { background: #dce9f8; }
+.movie {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+small { color: #666; }
+</style>
 </head>
 <body>
 
-<header>
-  <div class="container">
-    <h1>🎬 Кинорадар</h1>
-    <p>Находим фильмы. Следим за их появлением.</p>
-  </div>
-</header>
+<h1>Кинорадар</h1>
 
-<main class="container">
+<div class="tabs">
+  <button id="searchTab" class="active" onclick="showTab('search')">
+    Найти фильм
+  </button>
+  <button id="trackTab" onclick="showTab('track')">
+    Отслеживать появление
+  </button>
+</div>
 
-  <section class="intro">
-    <h2>Что будем искать сегодня?</h2>
-    <p>Ищи фильмы, которые уже доступны, или добавляй те, появления которых ждёшь.</p>
-  </section>
+<div id="searchPanel" class="panel">
+  <h2>Поиск доступного фильма</h2>
+  <p>Введи название фильма. Кинорадар подготовит ссылки для поиска.</p>
 
-  <div class="tabs">
-    <button class="tab active" id="searchTab" onclick="showMode('search')">
-      Найти фильм
-    </button>
-    <button class="tab" id="trackTab" onclick="showMode('track')">
-      Отслеживать появление
-    </button>
-  </div>
+  <input id="movieSearch" type="text"
+    placeholder="Например, Грань будущего">
 
-  <section class="panel" id="searchPanel">
-    <h3>Поиск доступного фильма</h3>
-    <p class="hint">
-      Введи название фильма, чтобы в дальнейшем найти площадки,
-      где его можно посмотреть.
-    </p>
-    <input id="searchInput" placeholder="Например, название фильма">
-    <button class="main-button" onclick="searchMovie()">Найти фильм</button>
-    <div class="notice" id="searchMessage">
-      Поиск по видеоплощадкам будет подключён на следующем этапе.
-    </div>
-  </section>
+  <button onclick="searchMovie()">Искать фильм</button>
 
-  <section class="panel hidden" id="trackPanel">
-    <h3>Отслеживание нового фильма</h3>
-    <p class="hint">
-      Добавь фильм, которого пока нет в доступных источниках.
-      Кинорадар будет отслеживать его появление после подключения автоматического поиска.
-    </p>
-    <input id="trackInput" placeholder="Название фильма">
-    <button class="main-button" onclick="addMovie()">Добавить в отслеживание</button>
-    <div class="notice">
-      Пока сохраняем список в этом браузере. Автоматическую проверку подключим отдельно.
-    </div>
-  </section>
+  <div id="searchResults"></div>
+</div>
 
-  <section class="list-section">
-    <h3>Мои фильмы на отслеживании</h3>
-    <div id="movieList">
-      <div class="empty">Пока список пуст.</div>
-    </div>
-  </section>
+<div id="trackPanel" class="panel hidden">
+  <h2>Отслеживание нового фильма</h2>
+  <p>Добавь фильм, которого пока нет в доступных источниках.</p>
 
-</main>
+  <input id="movieTrack" type="text"
+    placeholder="Название фильма">
 
-<footer>
-  Кинорадар · Личный проект
-</footer>
+  <button onclick="addMovie()">Добавить отслеживание</button>
+
+  <h3>Мои фильмы</h3>
+  <div id="movieList"></div>
+</div>
 
 <script>
-  const storageKey = "kinoradar_movies";
+function showTab(tab) {
+  document.getElementById('searchPanel').classList.toggle(
+    'hidden', tab !== 'search'
+  );
+  document.getElementById('trackPanel').classList.toggle(
+    'hidden', tab !== 'track'
+  );
+  document.getElementById('searchTab').classList.toggle(
+    'active', tab === 'search'
+  );
+  document.getElementById('trackTab').classList.toggle(
+    'active', tab === 'track'
+  );
+  if (tab === 'track') showMovies();
+}
 
-  function getMovies() {
-    try {
-      return JSON.parse(localStorage.getItem(storageKey)) || [];
-    } catch {
-      return [];
-    }
+function searchMovie() {
+  var title = document.getElementById('movieSearch').value.trim();
+  var results = document.getElementById('searchResults');
+
+  if (!title) {
+    results.innerHTML = '<p>Сначала введи название фильма.</p>';
+    return;
   }
 
-  function saveMovies(movies) {
-    localStorage.setItem(storageKey, JSON.stringify(movies));
+  var vkQuery = encodeURIComponent(title);
+  var yandexQuery = encodeURIComponent(
+    title + ' смотреть онлайн'
+  );
+  var videoQuery = encodeURIComponent(
+    title + ' смотреть онлайн site:vk.com/video'
+  );
+
+  results.innerHTML =
+    '<h3>Где искать «' + escapeHTML(title) + '»</h3>' +
+    '<a class="result" target="_blank" rel="noopener" href="https://vk.com/video?q=' +
+    vkQuery + '">Искать видео ВКонтакте</a>' +
+    '<a class="result" target="_blank" rel="noopener" href="https://yandex.ru/search/?text=' +
+    videoQuery + '">Искать видео через Яндекс на VK</a>' +
+    '<a class="result" target="_blank" rel="noopener" href="https://yandex.ru/search/?text=' +
+    yandexQuery + '">Искать в Яндексе на других площадках</a>';
+}
+
+function escapeHTML(text) {
+  return text.replace(/[&<>"']/g, function(ch) {
+    return {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    }[ch];
+  });
+}
+
+function getMovies() {
+  try {
+    return JSON.parse(localStorage.getItem('kinoradar_movies') || '[]');
+  } catch (e) {
+    return [];
+  }
+}
+
+function addMovie() {
+  var input = document.getElementById('movieTrack');
+  var title = input.value.trim();
+
+  if (!title) {
+    alert('Введи название фильма.');
+    return;
   }
 
-  function showMode(mode) {
-    document.getElementById("searchPanel").classList.toggle("hidden", mode !== "search");
-    document.getElementById("trackPanel").classList.toggle("hidden", mode !== "track");
-    document.getElementById("searchTab").classList.toggle("active", mode === "search");
-    document.getElementById("trackTab").classList.toggle("active", mode === "track");
+  var movies = getMovies();
+
+  if (movies.indexOf(title) !== -1) {
+    alert('Этот фильм уже есть в списке.');
+    return;
   }
 
-  function addMovie() {
-    const input = document.getElementById("trackInput");
-    const name = input.value.trim();
+  movies.push(title);
+  localStorage.setItem('kinoradar_movies', JSON.stringify(movies));
+  input.value = '';
+  showMovies();
+}
 
-    if (!name) {
-      alert("Сначала введи название фильма.");
-      return;
-    }
+function showMovies() {
+  var movies = getMovies();
+  var list = document.getElementById('movieList');
 
-    const movies = getMovies();
-
-    if (movies.some(movie => movie.name.toLowerCase() === name.toLowerCase())) {
-      alert("Этот фильм уже есть в твоём списке.");
-      return;
-    }
-
-    movies.push({ name: name });
-    saveMovies(movies);
-    input.value = "";
-    renderMovies();
-    alert("Фильм добавлен в список!");
+  if (movies.length === 0) {
+    list.innerHTML = '<p>Пока фильмов нет.</p>';
+    return;
   }
 
-  function deleteMovie(index) {
-    const movies = getMovies();
-    movies.splice(index, 1);
-    saveMovies(movies);
-    renderMovies();
-  }
+  list.innerHTML = '';
 
-  function renderMovies() {
-    const list = document.getElementById("movieList");
-    const movies = getMovies();
+  movies.forEach(function(movie, index) {
+    var item = document.createElement('div');
+    item.className = 'movie';
 
-    if (!movies.length) {
-      list.innerHTML = '<div class="empty">Пока список пуст.</div>';
-      return;
-    }
+    var name = document.createElement('span');
+    name.textContent = movie;
 
-    list.innerHTML = "";
+    var remove = document.createElement('button');
+    remove.textContent = 'Удалить';
+    remove.style.marginLeft = '12px';
+    remove.onclick = function() {
+      var current = getMovies();
+      current.splice(index, 1);
+      localStorage.setItem('kinoradar_movies',
+        JSON.stringify(current));
+      showMovies();
+    };
 
-    movies.forEach((movie, index) => {
-      const item = document.createElement("div");
-      item.className = "movie";
+    item.appendChild(name);
+    item.appendChild(remove);
+    list.appendChild(item);
+  });
+}
 
-      const info = document.createElement("div");
-      const name = document.createElement("div");
-      name.className = "movie-name";
-      name.textContent = movie.name;
-
-      const status = document.createElement("div");
-      status.className = "movie-status";
-      status.textContent = "Ожидает подключения автоматической проверки";
-
-      info.appendChild(name);
-      info.appendChild(status);
-
-      const remove = document.createElement("button");
-      remove.className = "delete-button";
-      remove.textContent = "Удалить";
-      remove.onclick = () => deleteMovie(index);
-
-      item.appendChild(info);
-      item.appendChild(remove);
-      list.appendChild(item);
-    });
-  }
-
-  function searchMovie() {
-    const input = document.getElementById("searchInput");
-    const message = document.getElementById("searchMessage");
-    const name = input.value.trim();
-
-    if (!name) {
-      message.textContent = "Сначала введи название фильма.";
-      return;
-    }
-
-    message.textContent =
-      "Фильм «" + name +
-      "» принят. Подключение поиска по видеоплощадкам будет следующим этапом.";
-  }
-
-  renderMovies();
+showMovies();
 </script>
 
 </body>
