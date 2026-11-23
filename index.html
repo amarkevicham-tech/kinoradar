@@ -1,0 +1,373 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#172033">
+  <title>Кинорадар — поиск и отслеживание фильмов</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3f5f9;
+      color: #20283a;
+    }
+
+    header {
+      background: #172033;
+      color: white;
+      padding: 25px 20px;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: auto;
+    }
+
+    header h1 {
+      margin: 0 0 7px;
+      font-size: 29px;
+    }
+
+    header p {
+      margin: 0;
+      color: #c5ccda;
+      font-size: 14px;
+    }
+
+    main {
+      padding: 25px 16px 50px;
+    }
+
+    .intro {
+      margin-bottom: 22px;
+    }
+
+    .intro h2 {
+      margin: 0 0 8px;
+      font-size: 23px;
+    }
+
+    .intro p {
+      color: #667085;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    button {
+      cursor: pointer;
+      font-size: 15px;
+      border: 0;
+      border-radius: 9px;
+      padding: 12px 17px;
+    }
+
+    .tab {
+      background: #e3e7ef;
+      color: #344054;
+    }
+
+    .tab.active {
+      background: #315ee7;
+      color: white;
+    }
+
+    .panel {
+      background: white;
+      border-radius: 13px;
+      padding: 22px;
+      box-shadow: 0 3px 15px rgba(20,30,50,.05);
+    }
+
+    .panel h3 {
+      margin: 0 0 8px;
+      font-size: 19px;
+    }
+
+    .hint {
+      color: #667085;
+      font-size: 14px;
+      line-height: 1.5;
+      margin: 0 0 17px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ccd2dd;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-bottom: 12px;
+    }
+
+    input:focus {
+      outline: 2px solid #b7c7ff;
+      border-color: #315ee7;
+    }
+
+    .main-button {
+      width: 100%;
+      background: #315ee7;
+      color: white;
+      font-weight: bold;
+    }
+
+    .main-button:hover {
+      background: #244bc2;
+    }
+
+    .notice {
+      margin-top: 16px;
+      padding: 13px;
+      background: #eef3ff;
+      border-radius: 8px;
+      color: #40527d;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .list-section {
+      margin-top: 28px;
+    }
+
+    .list-section h3 {
+      font-size: 18px;
+    }
+
+    .movie {
+      background: white;
+      border: 1px solid #e2e6ed;
+      border-radius: 9px;
+      padding: 14px;
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .movie-name {
+      font-weight: bold;
+      overflow-wrap: anywhere;
+    }
+
+    .movie-status {
+      font-size: 12px;
+      color: #667085;
+      margin-top: 5px;
+    }
+
+    .delete-button {
+      background: #fcecec;
+      color: #b42318;
+      padding: 9px 12px;
+      flex-shrink: 0;
+    }
+
+    .empty {
+      color: #8992a3;
+      font-size: 14px;
+      padding: 14px 0;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    footer {
+      text-align: center;
+      color: #8992a3;
+      font-size: 12px;
+      padding: 20px;
+    }
+
+    @media (max-width: 520px) {
+      header h1 { font-size: 25px; }
+      .tabs { flex-direction: column; }
+      .panel { padding: 17px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>🎬 Кинорадар</h1>
+    <p>Находим фильмы. Следим за их появлением.</p>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="intro">
+    <h2>Что будем искать сегодня?</h2>
+    <p>Ищи фильмы, которые уже доступны, или добавляй те, появления которых ждёшь.</p>
+  </section>
+
+  <div class="tabs">
+    <button class="tab active" id="searchTab" onclick="showMode('search')">
+      Найти фильм
+    </button>
+    <button class="tab" id="trackTab" onclick="showMode('track')">
+      Отслеживать появление
+    </button>
+  </div>
+
+  <section class="panel" id="searchPanel">
+    <h3>Поиск доступного фильма</h3>
+    <p class="hint">
+      Введи название фильма, чтобы в дальнейшем найти площадки,
+      где его можно посмотреть.
+    </p>
+    <input id="searchInput" placeholder="Например, название фильма">
+    <button class="main-button" onclick="searchMovie()">Найти фильм</button>
+    <div class="notice" id="searchMessage">
+      Поиск по видеоплощадкам будет подключён на следующем этапе.
+    </div>
+  </section>
+
+  <section class="panel hidden" id="trackPanel">
+    <h3>Отслеживание нового фильма</h3>
+    <p class="hint">
+      Добавь фильм, которого пока нет в доступных источниках.
+      Кинорадар будет отслеживать его появление после подключения автоматического поиска.
+    </p>
+    <input id="trackInput" placeholder="Название фильма">
+    <button class="main-button" onclick="addMovie()">Добавить в отслеживание</button>
+    <div class="notice">
+      Пока сохраняем список в этом браузере. Автоматическую проверку подключим отдельно.
+    </div>
+  </section>
+
+  <section class="list-section">
+    <h3>Мои фильмы на отслеживании</h3>
+    <div id="movieList">
+      <div class="empty">Пока список пуст.</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Кинорадар · Личный проект
+</footer>
+
+<script>
+  const storageKey = "kinoradar_movies";
+
+  function getMovies() {
+    try {
+      return JSON.parse(localStorage.getItem(storageKey)) || [];
+    } catch {
+      return [];
+    }
+  }
+
+  function saveMovies(movies) {
+    localStorage.setItem(storageKey, JSON.stringify(movies));
+  }
+
+  function showMode(mode) {
+    document.getElementById("searchPanel").classList.toggle("hidden", mode !== "search");
+    document.getElementById("trackPanel").classList.toggle("hidden", mode !== "track");
+    document.getElementById("searchTab").classList.toggle("active", mode === "search");
+    document.getElementById("trackTab").classList.toggle("active", mode === "track");
+  }
+
+  function addMovie() {
+    const input = document.getElementById("trackInput");
+    const name = input.value.trim();
+
+    if (!name) {
+      alert("Сначала введи название фильма.");
+      return;
+    }
+
+    const movies = getMovies();
+
+    if (movies.some(movie => movie.name.toLowerCase() === name.toLowerCase())) {
+      alert("Этот фильм уже есть в твоём списке.");
+      return;
+    }
+
+    movies.push({ name: name });
+    saveMovies(movies);
+    input.value = "";
+    renderMovies();
+    alert("Фильм добавлен в список!");
+  }
+
+  function deleteMovie(index) {
+    const movies = getMovies();
+    movies.splice(index, 1);
+    saveMovies(movies);
+    renderMovies();
+  }
+
+  function renderMovies() {
+    const list = document.getElementById("movieList");
+    const movies = getMovies();
+
+    if (!movies.length) {
+      list.innerHTML = '<div class="empty">Пока список пуст.</div>';
+      return;
+    }
+
+    list.innerHTML = "";
+
+    movies.forEach((movie, index) => {
+      const item = document.createElement("div");
+      item.className = "movie";
+
+      const info = document.createElement("div");
+      const name = document.createElement("div");
+      name.className = "movie-name";
+      name.textContent = movie.name;
+
+      const status = document.createElement("div");
+      status.className = "movie-status";
+      status.textContent = "Ожидает подключения автоматической проверки";
+
+      info.appendChild(name);
+      info.appendChild(status);
+
+      const remove = document.createElement("button");
+      remove.className = "delete-button";
+      remove.textContent = "Удалить";
+      remove.onclick = () => deleteMovie(index);
+
+      item.appendChild(info);
+      item.appendChild(remove);
+      list.appendChild(item);
+    });
+  }
+
+  function searchMovie() {
+    const input = document.getElementById("searchInput");
+    const message = document.getElementById("searchMessage");
+    const name = input.value.trim();
+
+    if (!name) {
+      message.textContent = "Сначала введи название фильма.";
+      return;
+    }
+
+    message.textContent =
+      "Фильм «" + name +
+      "» принят. Подключение поиска по видеоплощадкам будет следующим этапом.";
+  }
+
+  renderMovies();
+</script>
+
+</body>
+</html>
