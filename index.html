@@ -60,7 +60,16 @@ input {
   padding: 10px;
   border-bottom: 1px solid #ddd;
 }
-small { color: #666; }
+.mention {
+  padding: 12px 0;
+  border-bottom: 1px solid #ddd;
+}
+.mention a { color: #174d91; }
+.note {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+}
 </style>
 </head>
 <body>
@@ -78,7 +87,7 @@ small { color: #666; }
 
 <div id="searchPanel" class="panel">
   <h2>Поиск доступного фильма</h2>
-  <p>Введи название фильма. Кинорадар подготовит ссылки для поиска.</p>
+  <p>Введи название фильма.</p>
 
   <input id="movieSearch" type="text"
     placeholder="Например, Грань будущего">
@@ -99,6 +108,20 @@ small { color: #666; }
 
   <h3>Мои фильмы</h3>
   <div id="movieList"></div>
+
+  <hr>
+
+  <h2>Результаты отслеживания</h2>
+  <p id="checkDate">Загружаю результаты проверки...</p>
+
+  <button onclick="loadResults()">Обновить результаты</button>
+
+  <p class="note">
+    Ниже отображаются найденные упоминания фильмов.
+    Упоминание ещё не означает, что полная версия доступна для просмотра.
+  </p>
+
+  <div id="automaticResults"></div>
 </div>
 
 <script>
@@ -115,7 +138,11 @@ function showTab(tab) {
   document.getElementById('trackTab').classList.toggle(
     'active', tab === 'track'
   );
-  if (tab === 'track') showMovies();
+
+  if (tab === 'track') {
+    showMovies();
+    loadResults();
+  }
 }
 
 function searchMovie() {
@@ -123,21 +150,19 @@ function searchMovie() {
   var results = document.getElementById('searchResults');
 
   if (!title) {
-    results.innerHTML = '<p>Сначала введи название фильма.</p>';
+    results.textContent = 'Сначала введи название фильма.';
     return;
   }
 
-  var vkQuery = encodeURIComponent(title);
+  var query = encodeURIComponent(title);
   var yandexQuery = encodeURIComponent(
     title + ' смотреть онлайн'
   );
-  
 
   results.innerHTML =
     '<h3>Где искать «' + escapeHTML(title) + '»</h3>' +
     '<a class="result" target="_blank" rel="noopener" href="https://vk.com/video?q=' +
-    vkQuery + '">Искать видео ВКонтакте</a>' +
-    
+    query + '">Искать видео ВКонтакте</a>' +
     '<a class="result" target="_blank" rel="noopener" href="https://yandex.ru/search/?text=' +
     yandexQuery + '">Искать в Яндексе на других площадках</a>';
 }
@@ -188,12 +213,12 @@ function showMovies() {
   var movies = getMovies();
   var list = document.getElementById('movieList');
 
+  list.innerHTML = '';
+
   if (movies.length === 0) {
-    list.innerHTML = '<p>Пока фильмов нет.</p>';
+    list.textContent = 'Пока фильмов нет.';
     return;
   }
-
-  list.innerHTML = '';
 
   movies.forEach(function(movie, index) {
     var item = document.createElement('div');
@@ -205,6 +230,7 @@ function showMovies() {
     var remove = document.createElement('button');
     remove.textContent = 'Удалить';
     remove.style.marginLeft = '12px';
+
     remove.onclick = function() {
       var current = getMovies();
       current.splice(index, 1);
@@ -217,6 +243,86 @@ function showMovies() {
     item.appendChild(remove);
     list.appendChild(item);
   });
+}
+
+async function loadResults() {
+  var date = document.getElementById('checkDate');
+  var output = document.getElementById('automaticResults');
+
+  date.textContent = 'Загружаю результаты проверки...';
+  output.innerHTML = '';
+
+  try {
+    var response = await fetch('results.json?time=' + Date.now(), {
+      cache: 'no-store'
+    });
+
+    if (!response.ok) {
+      throw new Error('Файл результатов пока недоступен.');
+    }
+
+    var data = await response.json();
+
+    if (data.checked_at) {
+      date.textContent = 'Последняя проверка: ' +
+        new Date(data.checked_at).toLocaleString('ru-RU', {
+          timeZone: 'Europe/Moscow'
+        }) + ' (Москва)';
+    } else {
+      date.textContent = 'Дата проверки не указана.';
+    }
+
+    if (!data.movies || data.movies.length === 0) {
+      output.textContent = 'Пока нет результатов.';
+      return;
+    }
+
+    data.movies.forEach(function(movie) {
+      var section = document.createElement('section');
+      var heading = document.createElement('h3');
+      heading.textContent = movie.movie || 'Фильм';
+      section.appendChild(heading);
+
+      if (movie.status === 'error') {
+        var error = document.createElement('p');
+        error.textContent = 'Не удалось проверить этот фильм.';
+        section.appendChild(error);
+      } else if (!movie.mentions || movie.mentions.length === 0) {
+        var empty = document.createElement('p');
+        empty.textContent = 'Новых упоминаний не найдено.';
+        section.appendChild(empty);
+      } else {
+        movie.mentions.forEach(function(mention) {
+          var item = document.createElement('div');
+          item.className = 'mention';
+
+          var link = document.createElement('a');
+          link.href = mention.link;
+          link.target = '_blank';
+          link.rel = 'noopener';
+          link.textContent = mention.title || 'Открыть публикацию';
+
+          item.appendChild(link);
+
+          if (mention.date) {
+            var info = document.createElement('p');
+            info.className = 'note';
+            info.textContent = mention.date;
+            item.appendChild(info);
+          }
+
+          section.appendChild(item);
+        });
+      }
+
+      output.appendChild(section);
+    });
+
+  } catch (error) {
+    date.textContent = 'Не удалось загрузить результаты.';
+    output.textContent =
+      'Проверь позже: файл результатов может ещё обновляться на сайте.';
+  }
 }
 
 showMovies();
