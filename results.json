@@ -1,10 +1,25 @@
 {
-  "checked_at": "2026-11-27T07:08:42.896542+00:00",
+  "checked_at": "2026-11-28T07:01:45.139334+00:00",
   "movies": [
     {
       "movie": "Святые предприниматели",
       "status": "ok",
       "mentions": [
+        {
+          "title": "В Тамбове состоялся показ документального фильма «Святые предприниматели» - Тамбовская митрополия",
+          "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOMjRXRnF4eV9tZ0I5VlpZSndXVGRNUVZNanJzRjNmMUJMYXJKQmtBbW0wQ3k2TmFWNV9NUmloNjQzYVlPd2Jxb1pOdGdHMlNka2tsVWh6RVNBNU1uUTlVSUhHRy1kMF9ZQUxCQ3BBSXl1dVNNOXZNSlRuZ0cySF9helhNZDRZbGNRMmlWaUdnenNCUDd4VWhuei1iWUM?oc=5",
+          "date": "Wed, 25 Nov 2026 06:47:17 GMT",
+          "source": "Тамбовская митрополия",
+          "classification": "unconfirmed",
+          "status_label": "Не подтверждено — полный фильм не проверен",
+          "page_check": {
+            "page_status": "checked",
+            "page_title": "Google News",
+            "duration_seconds": null,
+            "video_found": false,
+            "page_message": "Не удалось обнаружить явные признаки видеоплеера."
+          }
+        },
         {
           "title": "В поисках прибыли и Бога: волжанам показали фильм «Святые предприниматели» - Волжская правда",
           "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNS1NEOXRpQnRVRkRYNUlUTG9rTndqc2tDS1JRNEZuSlo2ZzBPNWVIV25KWEtlb3N6dTB4S0tRQWZyc3ZEWk9KN01sR0JSZTQ1UFdOY2pGaVBsWDJKcF93N0ZKNmpkTm1yU0lFWlNVNUJ1TUNpZ2tCOVptR0FZNnVZLU9iNlF5bW50UldyV2JjdW1EOGRtbjEwUEZR0gGfAUFVX3lxTE9FLTVPZVB6c0FINlhtaU5YUVpoWWlzOUxwXzhacDUwM0psb3lpS0VXclpZSTRHN2R0aWNCNi1yZWZ2WkJTYzd5YzZVQW9pSXpIZzE4QzdvR3Z2dkV0NXdGUmYxX08yTmxvT3FGaE1tVGU0TWxnc1d3a1dlSFlOXzZWOE9HZnpOYjNhREQ2M3lVMl9xMWxRQWlTZkx0MEF2aw?oc=5",
@@ -36,10 +51,10 @@
           }
         },
         {
-          "title": "Фильм «Святые предприниматели» покажут в Архангельске и Северодвинске - ИА \"РУСНОРД\"",
-          "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQYW1OaUFXRW9WOHZpaGRUQVRUVUYwQlJzYkJBQkF2djRyQzB4TFR2ZkxRYXhHNnFHbFBvZHpOOFhNLTNGT3lVS1VYa1U0U1BQLUxVTkVZQzJ0UXJuUzVCUHVwV0xXY1h6d2I4d3ZDc3cyNUhUSnBaLUhjd04zQ3lxb0k3elNxMjZ3Ynp4eE4xWlUxU216Z2FxaGVHZV92akl4d3o3djVScVM?oc=5",
-          "date": "Tue, 24 Nov 2026 09:00:53 GMT",
-          "source": "ИА \"РУСНОРД\"",
+          "title": "Фильм «Святые предприниматели» уже увидели более 15 тысяч зрителей в более чем 80-ти городах России - Официальный портал Московской Патриархии",
+          "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBwejE5ZzZVSGd2YlZPQjFxaDRzT0dCdlRocHYtS1d4WXh5Rl9EQnpVdkZlR3dsVFA0QlNJd0RDQW9qcDgwMEhNMVc5bjBDZw?oc=5",
+          "date": "Fri, 13 Nov 2026 08:00:00 GMT",
+          "source": "Официальный портал Московской Патриархии",
           "classification": "unconfirmed",
           "status_label": "Не подтверждено — полный фильм не проверен",
           "page_check": {
@@ -51,10 +66,10 @@
           }
         },
         {
-          "title": "Фильм «Святые предприниматели» уже увидели более 15 тысяч зрителей в более чем 80-ти городах России - Официальный портал Московской Патриархии",
-          "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBwejE5ZzZVSGd2YlZPQjFxaDRzT0dCdlRocHYtS1d4WXh5Rl9EQnpVdkZlR3dsVFA0QlNJd0RDQW9qcDgwMEhNMVc5bjBDZw?oc=5",
-          "date": "Fri, 13 Nov 2026 08:00:00 GMT",
-          "source": "Официальный портал Московской Патриархии",
+          "title": "Фильм «Святые предприниматели» покажут в Архангельске и Северодвинске - ИА \"РУСНОРД\"",
+          "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQYW1OaUFXRW9WOHZpaGRUQVRUVUYwQlJzYkJBQkF2djRyQzB4TFR2ZkxRYXhHNnFHbFBvZHpOOFhNLTNGT3lVS1VYa1U0U1BQLUxVTkVZQzJ0UXJuUzVCUHVwV0xXY1h6d2I4d3ZDc3cyNUhUSnBaLUhjd04zQ3lxb0k3elNxMjZ3Ynp4eE4xWlUxU216Z2FxaGVHZV92akl4d3o3djVScVM?oc=5",
+          "date": "Tue, 24 Nov 2026 09:00:53 GMT",
+          "source": "ИА \"РУСНОРД\"",
           "classification": "unconfirmed",
           "status_label": "Не подтверждено — полный фильм не проверен",
           "page_check": {
@@ -111,21 +126,6 @@
           }
         },
         {
-          "title": "⚡️Фильм «Святые предприниматели» С 5 ноября — в кинотеатрах России Это фильм о нравственном измерении в предпринимательстве, бизнесе на службе... 2026 - ВКонтакте",
-          "link": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE9KUTJmMUl2b2t6YWxGMkMtUUNfMXNWRDlRZ3FsY3NqdFE1NWFmeTVLNEpxNzZCTW51YnZNSXNWbGZqaFpFZ3d0U3Jmbw?oc=5",
-          "date": "Thu, 08 Oct 2026 07:00:00 GMT",
-          "source": "ВКонтакте",
-          "classification": "unconfirmed",
-          "status_label": "Не подтверждено — полный фильм не проверен",
-          "page_check": {
-            "page_status": "checked",
-            "page_title": "Google News",
-            "duration_seconds": null,
-            "video_found": false,
-            "page_message": "Не удалось обнаружить явные признаки видеоплеера."
-          }
-        },
-        {
           "title": "В Кургане покажут фильм о святых предпринимателях - URA.RU",
           "link": "https://news.google.com/rss/articles/CBMiR0FVX3lxTE95eFNzb1JJUENpNUN1SWJpb1UtSUhvSkFUal9GVm0yQXN4aWhyOHplMmJialNXekcyeFFEN3Q2dy1vbmZlQlFR?oc=5",
           "date": "Tue, 10 Nov 2026 08:00:00 GMT",
@@ -141,9 +141,9 @@
           }
         },
         {
-          "title": "В Черкесске состоялся показ фильма «Святые предприниматели» - Благословенный Кавказ",
-          "link": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTE5idDJiQkVhN0lqQmM3TFNLOXJjQlJ0SmwzM3pMNVltTzFjUEZDMnNYTU1ldjdDWHoya1hDaG8tdmhFOVXSAUNBVV95cUxOYnQyYkJFYTdJakJjN0xTSzlyY0JSdEpsMzN6TDVZbU8xY1BGQzJzWE1NZXY3Q1h6MmtYQ2hvLXZoRTlV?oc=5",
-          "date": "Thu, 19 Nov 2026 10:48:05 GMT",
+          "title": "«Святые предприниматели» собрали полный зал - Благословенный Кавказ",
+          "link": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTE1IUmZsTEZsZFJTUjFYdl9reFp0bDY3d2p0MGh5XzF6NW5uTXRvMzVJTXB3Zzd1LXZ4d3AzaEh4eWwyVVHSAUNBVV95cUxNSFJmbExGbGRSU1IxWHZfa3hadGw2N3dqdDBoeV8xejVubk10bzM1SU1wd2c3dS12eHdwM2hIeHlsMlVR?oc=5",
+          "date": "Sun, 08 Nov 2026 08:00:00 GMT",
           "source": "Благословенный Кавказ",
           "classification": "unconfirmed",
           "status_label": "Не подтверждено — полный фильм не проверен",
